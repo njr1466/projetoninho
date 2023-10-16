@@ -3,23 +3,8 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const appCategorias = express();
 const port = 3000;
+const connection = require('./mysql');
 
-
-// Configurar conexão com o MySQL
-const connection = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  password: '',
-  database: 'projeto'
-});
-
-connection.connect((err) => {
-  if (err) {
-    console.error('Erro ao conectar ao MySQL: ' + err.message);
-  } else {
-    console.log('Conectado ao MySQL');
-  }
-});
 
 // Middleware para lidar com dados codificados no corpo da solicitação
 appCategorias.use(express.urlencoded({ extended: true }));
